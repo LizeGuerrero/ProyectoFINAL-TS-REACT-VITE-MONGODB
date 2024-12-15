@@ -3,7 +3,7 @@ import Pelicula from '../../models/Pelicula';
 import Genero from '../../models/Genero';
 
 // Obtener todas las películas
-const getPeliculas = async (req: Request, res: Response): Promise<Response> => {
+const getPeliculas = async (req: Request, res: Response): Promise<void> => {
   try {
     const peliculas = await Pelicula.find()
       .populate("director_id", "nombre_director")
@@ -11,13 +11,21 @@ const getPeliculas = async (req: Request, res: Response): Promise<Response> => {
 
     const peliculasConFechaFormateada = peliculas.map((pelicula) => ({
       ...pelicula.toObject(),
-      fecha_lanzamiento: pelicula.fecha_lanzamiento.toISOString().split("T")[0], // Convertir a YYYY-MM-DD
+      fecha_lanzamiento: pelicula.fecha_lanzamiento.toISOString().split("T")[0],
     }));
 
-    return res.json(peliculasConFechaFormateada); // Enviar respuesta directamente
+    // Changed return to direct send
+    res.json(peliculasConFechaFormateada);
   } catch (error) {
     console.error("Error al obtener las películas:", error);
-    return res.status(500).json({ error: "Error al obtener las películas" });
+    
+    // Check if headers have already been sent
+    if (!res.headersSent) {
+      res.status(500).json({ 
+        error: "Error al obtener las películas", 
+        details: error instanceof Error ? error.message : String(error) 
+      });
+    }
   }
 };
 
