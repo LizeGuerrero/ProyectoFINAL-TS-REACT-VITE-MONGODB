@@ -2,8 +2,18 @@ import { useState, useEffect } from "react";
 import { getPeliculas } from "../services/PeliculaService";
 import "./styles/Home.css";
 
+// Define the Pelicula type
+type Pelicula = {
+  _id: string;
+  titulo: string;
+  duracion: number;
+  sinopsis: string;
+  fecha_lanzamiento: string;
+  imagenes?: { url: string }[];
+};
+
 const Home = () => {
-  const [peliculas, setPeliculas] = useState([]);
+  const [peliculas, setPeliculas] = useState<Pelicula[]>([]);
 
   // Cargar las películas al montar el componente
   useEffect(() => {
@@ -13,7 +23,7 @@ const Home = () => {
   const loadPeliculas = async () => {
     try {
       const data = await getPeliculas();
-      setPeliculas(data);
+      setPeliculas(data as unknown as Pelicula[]);
     } catch (error) {
       console.error("Error al cargar películas:", error);
     }
@@ -39,14 +49,7 @@ const Home = () => {
                 <strong>Fecha de Lanzamiento:</strong>{" "}
                 {new Date(pelicula.fecha_lanzamiento).toLocaleDateString()}
               </p>
-              {/* Si hay imagen, mostrarla, esto más tarde va a cambiar eeee */}
-              {pelicula.imagenes?.length > 0 && (
-                <img
-                  src={pelicula.imagenes[0].url} // Ajusta si la estructura del campo imagen es diferente porque todavía no hay imagen xd
-                  alt={`${pelicula.titulo} portada`}
-                  className="pelicula-imagen"
-                />
-              )}
+              
             </div>
           ))
         )}
