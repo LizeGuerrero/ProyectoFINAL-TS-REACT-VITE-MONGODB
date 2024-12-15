@@ -22,7 +22,7 @@ app.use(express.json()); // Análisis de solicitudes JSON
 app.use(cookieParser()); // Agregar middleware de cookies
 app.use(
   cors({
-    origin: 'http://localhost:5173', // Permitir solicitudes desde el frontend (ajustar según sea necesario)
+   origin: process.env.FRONTEND_URL, // Permitir solicitudes desde el frontend (ajustar según sea necesario)
     credentials: true, // Permite el envío de cookies
   })
 );        // Habilitar CORS
