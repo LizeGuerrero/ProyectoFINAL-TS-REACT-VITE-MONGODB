@@ -36,25 +36,35 @@ const getPeliculaById = async (req: Request, res: Response): Promise<Response> =
 // Agregar una nueva película
 const addPelicula = async (req: Request, res: Response): Promise<Response> => {
   try {
-      console.log("Datos recibidos:", req.body); // Verifica los datos enviados
-      const generos = await Genero.find({
-          _id: { $in: req.body.generos }
-      });
+    console.log("Datos recibidos:", req.body);
+    const generos = await Genero.find({
+      _id: { $in: req.body.generos }
+    });
 
-      console.log("Géneros encontrados:", generos); // Verifica los géneros encontrados
+    console.log("Géneros encontrados:", generos);
 
-      const peliculaData = {
-          ...req.body,
-          generos: generos.map(g => g._id),
-          fecha_lanzamiento: new Date(req.body.fecha_lanzamiento),
-      };
+    const peliculaData = {
+      ...req.body,
+      generos: generos.map(g => g._id),
+      fecha_lanzamiento: new Date(req.body.fecha_lanzamiento),
+    };
 
-      const newPelicula = new Pelicula(peliculaData);
-      await newPelicula.save();
-      return res.status(201).json(newPelicula);
+    const newPelicula = new Pelicula(peliculaData);
+    await newPelicula.save();
+    return res.status(201).json(newPelicula);
   } catch (error) {
-      console.error("Error al agregar la película:", (error as Error).message);
-      return res.status(500).json({ error: "Error al agregar la película", details: (error as Error).message });
+    console.error("Error al agregar la película:", error);
+    
+    // Ensure we only send a response if one hasn't been sent already
+    if (!res.headersSent) {
+      return res.status(500).json({ 
+        error: "Error al agregar la película", 
+        details: error instanceof Error ? error.message : String(error) 
+      });
+    }
+    
+    // If headers already sent, just log the error
+    return res.end();
   }
 };
 
