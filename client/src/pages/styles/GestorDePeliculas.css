@@ -1,0 +1,243 @@
+/* Estilos generales */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+|
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para la sección de peliculas */
+.peliculaCard header {
+    all: unset;  /* Esto elimina todo estilo heredado */
+    display: block; /* Asegúrate de que el header se comporte como bloque */
+    padding: 0; /* Añade tu propio padding si es necesario */
+    border: none; /* Elimina cualquier borde si es necesario */
+    /* Otros estilos específicos para header en la card */
+}
+.seccionPelicula {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.peliculaCard {
+  background: #231f1f;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.peliculaCard:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #2c2929;
+}
+
+.pelicula-header {
+  margin-bottom: 10px;
+}
+
+.pelicula-header h2 {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.pelicula-header h2:hover {
+  color: #f0a500;
+}
+
+.pelicula-fecha {
+  font-size: 0.9em;
+  color: #bbb;
+}
+
+.pelicula-sinopsis p {
+  color: #bbb;
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.pelicula-director p {
+  color: #bbb;
+  margin: 5px 0;
+}
+
+.pelicula-generos p {
+  color: #bbb;
+  margin: 5px 0;
+}
+
+.pelicula-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #007BFF;
+}
+
+.delete-btn {
+  background-color: #d33;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  opacity: 0.8;
+}
+
+.edit-btn:active,
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+/* Estilo para los inputs, select y botones */
+input,
+select,
+button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: all 0.3s ease; /* Agregar transición para el cambio suave */
+}
+
+/* Efecto cuando el input o select está enfocado */
+input:focus,
+select:focus {
+  border-color: #007BFF; /* Cambiar el color del borde */
+  outline: none; /* Eliminar el contorno predeterminado */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra sutil al enfoque */
+}
+
+/* Estilo para el botón */
+button {
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transición para color y movimiento */
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-4px); /* Mover el botón ligeramente hacia arriba */
+}
+
+/* Efecto de brinquito al hacer clic */
+button:active {
+  transform: translateY(2px); /* Mover el botón hacia abajo ligeramente al hacer clic */
+}
+
+/* Estilo para el hover en inputs y select */
+input:hover,
+select:hover {
+  border-color: #0056b3; /* Cambiar color del borde en hover */
+}
+
+/* Estilo para el contenedor de generos "seleccionar género" */
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.checkbox-item label {
+  cursor: pointer;
+  font-size: 1em;
+  color: #f0f0f0;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #555;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-item input[type="checkbox"]:checked + label {
+  background-color: rgba(200, 162, 200, 0.6);
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.checkbox-item label:hover {
+  background-color: #777;
+  transform: translateY(-2px);
+}
+
+
+
+.checkbox-item label:active {
+  background-color: #666;
+  transform: translateY(1px);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,54 @@
+/* Estilo para la navbar cuando está activa */
+.current {
+  border-top: 2px solid rgb(139, 74, 203);
+}
+
+/* Navbar posicionada de forma fija en la parte superior */
+.navbar {
+  position: fixed;       /* Fija la navbar al top */
+  top: 0;                /* Alinea al borde superior */
+  left: 0;               /* Alinea al borde izquierdo */
+  right: 0;              /* Alinea al borde derecho */
+  z-index: 9999;         /* Asegura que esté encima de otros elementos */
+  background: #302b63d0; /* Fondo oscuro con algo de transparencia */
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombras para resaltar la navbar */
+}
+
+/* Lista de elementos en la navbar */
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.list li {
+  display: inline-block;
+  margin-left: 25px;
+  font-size: 20px;
+  color: white;
+}
+
+.list li a {
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid rgb(145, 101, 166);
+  border-bottom-width: 0;
+  transition: .5s ease-in-out;
+}
+
+/* Efecto al pasar el ratón sobre los enlaces */
+.list li a:hover {
+  border-bottom: 3px solid rgb(161, 131, 199);
+  border-bottom-width: 100%;
+  border-bottom-right-radius: 50%;
+  color: rgb(200, 178, 220);
+}
+
+
+
+/* Ajustes para asegurar que no haya superposición de contenido */
+body {
+  margin-top: 60px; /* Deja espacio para que el contenido no quede debajo de la navbar */
+}

@@ -1,0 +1,133 @@
+
+
+
+* { /*Estandarizar todo para que no hayan bordes ni espacios desconocidos raros.*/
+    box-sizing: border-box; /*Sin bordes ni espacios.*/
+    /*align-items: center; Centrar verticalmente*/
+    /* justify-content: center; Centrar horizontalmente*/
+    text-align: center; /*Centrar horizontalmente texto*/
+    margin: 0;  /*Sin margenes*/
+    padding: 0;     /*Sin padding*/
+
+}
+
+
+
+
+/* Estilos para el Contact */
+
+.formulario-container {
+    grid-column: 4 / 10; /* Alinea el formulario en el centro del grid */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #f1f1f1;
+    font-family: Arial, sans-serif;
+}
+
+.formulario-container .form {
+    background-color: #1c1c1c;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+.formulario-container .form h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Campos del formulario */
+.formulario-container .form .form-group {
+    margin-bottom: 15px;
+}
+
+.formulario-container .form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #cccccc;
+    font-size: 0.9em;
+}
+
+.formulario-container .form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    font-size: 1em;
+}
+
+.formulario-container .form .form-control:focus {
+    border-color: #555;
+    outline: none;
+}
+
+/* Botón de envío */
+.formulario-container .form .btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.formulario-container .form .btn-submit:hover {
+    background-color: #666;
+}
+
+/* Estilos para el About  */
+
+/* Estilos para el contenedor de texto */
+/*     .TituloAbout {
+        grid-column: 4 / 10; /* Alinea el formulario en el centro del grid */
+    
+
+.contenedor-texto {
+    grid-column: 4 / 10; /* Alinea el formulario en el centro del grid */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121212; /* Fondo oscuro */
+    color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+.contenedor-texto .text-content {
+    background-color: #1c1c1c;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.contenedor-texto .text-content h2 {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
+
+.contenedor-texto .text-content p {
+    margin: 15px 0;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
