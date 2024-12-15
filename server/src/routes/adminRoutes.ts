@@ -31,12 +31,12 @@ const router = express.Router();
 // Rutas para películas
 router.get('/peliculas', async (req: Request, res: Response) => {
   try {
-    const peliculas = await getPeliculas(req, res);
-    res.json(peliculas);
+    const peliculas = await getPeliculas(req, res); // No envíes la respuesta aquí
+    res.json(peliculas); // Enviar la respuesta aquí
   } catch (err) {
     res.status(500).json({ message: 'Error fetching peliculas' });
   }
-});             // Obtener todas las películas
+})         // Obtener todas las películas
 
 router.get('/peliculas/:id', async (req: Request, res: Response) => {
   try {

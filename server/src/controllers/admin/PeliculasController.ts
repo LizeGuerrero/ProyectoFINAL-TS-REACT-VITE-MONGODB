@@ -5,19 +5,19 @@ import Genero from '../../models/Genero';
 // Obtener todas las películas
 const getPeliculas = async (req: Request, res: Response): Promise<Response> => {
   try {
-      const peliculas = await Pelicula.find()
-          .populate("director_id", "nombre_director")
-          .populate("generos", "nombre_genero"); // Poblamos los géneros con el nombre
+    const peliculas = await Pelicula.find()
+      .populate("director_id", "nombre_director")
+      .populate("generos", "nombre_genero");
 
-      const peliculasConFechaFormateada = peliculas.map((pelicula) => ({
-          ...pelicula.toObject(),
-          fecha_lanzamiento: pelicula.fecha_lanzamiento.toISOString().split("T")[0], // Convertir a YYYY-MM-DD
-      }));
+    const peliculasConFechaFormateada = peliculas.map((pelicula) => ({
+      ...pelicula.toObject(),
+      fecha_lanzamiento: pelicula.fecha_lanzamiento.toISOString().split("T")[0], // Convertir a YYYY-MM-DD
+    }));
 
-      return res.json(peliculasConFechaFormateada);
+    return res.json(peliculasConFechaFormateada); // Enviar respuesta directamente
   } catch (error) {
-      console.error(error);
-      return res.status(500).json({ message: "Error al obtener las películas" });
+    console.error("Error al obtener las películas:", error);
+    return res.status(500).json({ error: "Error al obtener las películas" });
   }
 };
 
@@ -28,7 +28,8 @@ const getPeliculaById = async (req: Request, res: Response): Promise<Response> =
     if (!pelicula) return res.status(404).json({ error: 'Película no encontrada' });
     return res.json(pelicula);
   } catch (error) {
-    return res.status(500).json({ error: 'Error al obtener la película' });
+    console.error("Error al obtener la película:", (error as Error).message);
+    return res.status(500).json({ error: 'Error al obtener la película', details: (error as Error).message });
   }
 };
 

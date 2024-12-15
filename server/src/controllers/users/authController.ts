@@ -33,7 +33,7 @@ export const register = async (req: Request, res: Response): Promise<Response> =
 
         // Establecer la cookie con el token
         res.cookie('auth_token', token, {
-            httpOnly: false,
+            httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
             expires: new Date(Date.now() + 3600000), // 1 hora
@@ -77,7 +77,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
 
         // Establecer la cookie con el token
         res.cookie('auth_token', token, {
-            httpOnly: false,
+            httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Asegúrate de que esté habilitado solo en producción
             sameSite: 'lax',
             maxAge: 3600000 // 1 hora
@@ -113,7 +113,7 @@ export const verifyAuth = (req: Request, res: Response, next: NextFunction): Res
   
 export const logout = (req: Request, res: Response, next: NextFunction): void => {
     res.clearCookie('auth_token', {
-      httpOnly: false,
+      httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       // Consider adding domain and path for more comprehensive cookie clearing
